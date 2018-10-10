@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * @author TODO: please add student ID and name here
+ * @author TODO: B0444114 ���ɦw
  * Try to write some comments for your codes (methods, 15 points)
  */
 public class HW2 {
@@ -14,7 +14,7 @@ public class HW2 {
 		String testn= sc.nextLine(); 
         
 		int nDeck=Integer.parseInt(testn);
-		Deck deck=new Deck(nDeck);
+		Deck deck = new Deck(nDeck);
 		//TODO: please check your output, make sure that you print all cards on your screen (10 points)
 		deck.printDeck();
 		
@@ -26,8 +26,8 @@ public class HW2 {
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW2
-	 * @param allCards 所有的牌
-	 * @param nDeck 總共有幾副牌
+	 * @param allCards �Ҧ����P
+	 * @param nDeck �`�@���X�ƵP
 	 * @return
 	 */
 	private static boolean isAllCardsCorrect(ArrayList<Card> allCards,int nDeck){
@@ -35,7 +35,7 @@ public class HW2 {
 		boolean isCorrect=true;;
 		HashMap <String,Integer> checkHash=new HashMap<String,Integer>();
 		for(Card card:allCards){
-			int suit= card.getSuit();
+			int suit = card.getSuit();
 			int rank = card.getRank();
 			if(suit>4||suit<1||rank>13||rank<1){
 				isCorrect=false;
@@ -64,25 +64,40 @@ public class HW2 {
 
 }
 /**
- * Description: TODO: please add description here
+ * Description: TODO: Deck class have method ArrayList<Card> named cards,Deck(),PrintDeck(),getAllCards()
  */
 class Deck{
 	private ArrayList<Card> cards;
 	//TODO: Please implement the constructor (30 points)
 	public Deck(int nDeck){
 		cards=new ArrayList<Card>();
+		cards = new ArrayList<Card>();
 		//1 Deck have 52 cards, https://en.wikipedia.org/wiki/Poker
 		//Hint: Use new Card(x,y) and 3 for loops to add card into deck
 		//Sample code start
 		//Card card=new Card(1,1); ->means new card as clubs ace
 		//cards.add(card);
 		//Sample code end
+		for(int d = 0 ; d < nDeck ; d++) {  //numbers of deck
+			for(int x = 1 ; x <= 4 ; x++) {   //suits
+				for(int y = 1 ; y <= 13 ; y++) {  //ranks
+					Card card = new Card(x,y);
+					cards.add(card);
+					
+				}
+			}
+		}
+		
 
 	}	
 	//TODO: Please implement the method to print all cards on screen (10 points)
 	public void printDeck(){
 		//Hint: print all items in ArrayList<Card> cards, 
 		//TODO: please implement and reuse printCard method in Card class (5 points)
+		for(int p = 0 ; p < cards.size() ; p++) {
+			Card Cprint = cards.get(p);
+			Cprint.printCard();
+		}
 
 	}
 	public ArrayList<Card> getAllCards(){
@@ -90,7 +105,8 @@ class Deck{
 	}
 }
 /**
- * Description: TODO: please add description here
+ * Description: TODO: Card class have method:Card(),printCard(),getSuit(),getRank()
+ * 					  & instance variables:suit,rank
  */
 class Card{
 	private int suit; //Definition: 1~4, Clubs=1, Diamonds=2, Hearts=3, Spades=4
@@ -105,6 +121,7 @@ class Card{
 	}	
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
 	public void printCard(){
+		System.out.println(getSuit()+","+getRank());
 		//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
 
 	}
